@@ -1,0 +1,40 @@
+﻿@model Borealis.Models.TimeRegistrationViewModel
+
+@{
+	ViewBag.Title = "Time Registration";
+}
+
+<p>
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="row">
+			<span class="alert-danger">@TempData["alert"]</span>
+			<div class="col-lg-12">
+				@Html.LabelFor(x => x.Name, new { htmlAttributes = new { @class = "form-label" } })
+				<div class="form-group">
+					@Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(x => x.Name)
+				</div>
+			</div>
+			<div class="col-lg-12">
+				@Html.LabelFor(x => x.Surname, new { htmlAttributes = new { @class = "form-label" } })
+				<div class="form-group">
+					@Html.EditorFor(x => x.Surname, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(x => x.Surname)
+				</div>
+			</div>
+			<div class="col-lg-12">
+				@Html.LabelFor(x => x.Time, new { htmlAttributes = new { @class = "form-label" } })
+				<div class="form-group">
+					@Html.EditorFor(x => x.Time, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(x => x.Time)
+				</div>
+			</div>
+			<div>
+				<input type="submit" class="btn btn-primary" value="Prijavi" />
+			</div>
+		</div>
+	}
+</p>

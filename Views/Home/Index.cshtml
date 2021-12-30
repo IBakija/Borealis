@@ -1,0 +1,41 @@
+﻿@model Borealis.Models.TimeRegistrationViewModel
+
+@{
+	ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+	<h1>Top lista najboljih vremena</h1>
+	<p class="lead">Najbrži ljudi na svijetu</p>
+	<p><a href="/Home/TimeRegistration" class="btn btn-primary btn-lg">Prijavi se &raquo;</a></p>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="table-responsive table-hover table-striped table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Ime i prezime</th>
+					<th>Vrijeme</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if(Model.Participants.Count() > 0)
+				{
+					var i = 1;
+					foreach (var participant in Model.Participants)
+					{
+						<tr>
+							<td>@i</td>
+							<td>@participant.Name @participant.Surname</td>
+							<td>@participant.RaceTime</td>
+						</tr>
+						{i++;
+						}
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

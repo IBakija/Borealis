@@ -1,0 +1,34 @@
+﻿@model Borealis.Models.TimeRegistrationViewModel
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="table-responsive table-hover table-striped table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Ime i prezime</th>
+					<th>Vrijeme</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (Model.Participants.Count() > 0)
+				{
+					var i = 1;
+					foreach (var participant in Model.Participants)
+					{
+						<tr>
+							<td>@i</td>
+							<td>@participant.Name @participant.Surname</td>
+							<td>@participant.RaceTime</td>
+							<td><button class="btn btn-default" onclick="location.href='@Url.Action("Accept", "Admin")'">Odobri</button><button class="btn btn-danger" onclick="location.href='@Url.Action("Refuse", "Admin")'">Odbaci</button></td>
+						</tr>
+						{
+							i++;
+						}
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
