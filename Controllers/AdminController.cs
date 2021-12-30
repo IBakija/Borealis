@@ -42,7 +42,7 @@ namespace Borealis.Controllers
 			return View(model);
 		}
 
-		public void Accept(Guid id)
+		public ActionResult Accept(Guid id)
 		{
 			RaceTimeEntities raceTimeEntities = new RaceTimeEntities();
 			Participants participants = raceTimeEntities.Participants.FirstOrDefault(x => x.ID == id);
@@ -53,10 +53,13 @@ namespace Borealis.Controllers
 			raceTimeEntities.SaveChanges();
 
 			raceTimeEntities.Dispose();
+			return RedirectToAction("NewTimes");
 		}
 
-		public void Refuse(Guid id)
+		public ActionResult Refuse(Guid id, string url)
 		{
+			var view = (Server.UrlDecode(url)).Split('/').Last();
+
 			RaceTimeEntities raceTimeEntities = new RaceTimeEntities();
 			Participants participants = raceTimeEntities.Participants.FirstOrDefault(x => x.ID == id);
 
@@ -64,6 +67,7 @@ namespace Borealis.Controllers
 			raceTimeEntities.SaveChanges();
 
 			raceTimeEntities.Dispose();
+			return RedirectToAction(view);
 		}
 	}
 }

@@ -21,7 +21,7 @@
 							<td>@i</td>
 							<td>@participant.Name @participant.Surname</td>
 							<td>@participant.RaceTime</td>
-							<td><button class="btn btn-danger">Odbaci</button></td>
+							<td>@Html.ActionLink("Odbaci", "Refuse", "Admin", new { id = participant.ID, url = Request.RawUrl }, new { @class = "btn btn-danger", onclick = $"return confirm('Are you sure you wish to delete this persons ({participant.Name} {participant.Surname}) time registraation?');" })</td>
 						</tr>
 						{
 							i++;
