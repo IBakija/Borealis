@@ -16,7 +16,7 @@ namespace Borealis.Controllers
 			
 			RaceTimeEntities raceTimeEntities = new RaceTimeEntities();
 			List<Participants> participants = raceTimeEntities.Participants
-												//.Where(x => x.DateTimeAccepted != null)
+												.Where(x => x.DateTimeAccepted != null)
 												.OrderBy(x => x.RaceTime)
 												.ToList();
 
